@@ -1,0 +1,69 @@
+openapi: 3.0.0
+info:
+  title: UDP hole punching API
+  description: This is udp hole punching API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: http://localhost:8000/
+paths:
+  /requests:
+    get:
+      summary: returns a requests
+      responses:
+        "200":
+          description: OK
+  /send_request:
+    post:
+      summary: adds request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/request'
+        required: true
+      responses:
+        "200":
+          description: request created
+        "400":
+          description: invalid input, object invalid
+  /delete_data:
+    delete:
+      summary: delete request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/req_delete'
+        required: true
+      responses:
+        "200":
+          description: request deleted
+        "400":
+          description: invalid input, object invalid
+components:
+  schemas:
+    request:
+      required:
+      - ip
+      - name
+      - port
+      properties:
+        name:
+          type: string
+          example: Tom
+        ip:
+          type: string
+          example: 127.0.0.1
+        port:
+          type: integer
+          example: 5000
+    req_delete:
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Tom
