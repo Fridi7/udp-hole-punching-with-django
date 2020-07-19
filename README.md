@@ -1,19 +1,19 @@
-#UDP hole punching with Django
+# UDP hole punching with Django
 [UDP NAT hole punch](https://en.wikipedia.org/wiki/UDP_hole_punching) example implemented in python with Django
-###Step 1: Install requirements
+### Step 1: Install requirements
     pip install -r requirements.txt  
-###Step 2 Perform database migration
+### Step 2 Perform database migration
     python manage.py makemigrations
     python manage.py migrate
-###Step 3 Run Server
+### Step 3 Run Server
     python manage.py runserver
-###Run client
+### Run client
     python posrednik/launcher.py
 
-##Example
+## Example
 ![alt text](img/u1.png)
 ![alt text](img/u2.png)
-##Available in Docker
+## Available in Docker
     docker pull fridi7/posrednik:v2
     docker build .
     docker run -it -p 8000:8000 posrednik
